@@ -20,10 +20,6 @@
 		<error value="Sorry, but HTML5 isn't supported!" />
 	</section>
 
-	<section if="mobile">
-		<error value="Sorry, but mobile isn't supported!" />
-	</section>
-
 	<!-- [ Custom Defines ] -->
 
 	<define name="FUTURE_POLYMOD" if="desktop" />
@@ -75,6 +71,7 @@
 	<haxelib name="hxcpp-debug-server" if="desktop debug" />
 	<haxelib name="hxgamemode" if="linux" />
 	<haxelib name="hx_arabic_shaper" />
+	<haxelib name="extension-androidtools" />
 
 	<!-- [ Defines ] -->
 
