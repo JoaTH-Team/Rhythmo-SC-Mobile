@@ -20,10 +20,12 @@
 			"name": "flixel-ui",
 			"type": "haxelib"
 		},
-		{
-			"name": "hxcpp",
-			"type": "haxelib"
-		},
+    	{
+    	  "name": "hxcpp",
+    	  "type": "git",
+    	  "ref": "master",
+    	  "url": "https://github.com/mcagabe19-stuff/hxcpp"
+    	},
 		{
 			"name": "hxcpp-debug-server",
 			"type": "haxelib"
@@ -91,7 +93,7 @@
 		{
 			"name": "extension-androidtools",
 			"type": "git",
-			"ref": "main",
+			"ref": "9475bc38af35be2fc9754b49142ede4cb93838d4",
 			"url": "https://github.com/MAJigsaw77/extension-androidtools"
 		}
 	]
