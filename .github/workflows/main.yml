@@ -43,7 +43,7 @@ jobs:
           
       - name: Install Libraries
         run: |
-          run: haxe --interp -cp ./actions/libs-installer -D analyzer-optimize -main Main
+          haxe --interp -cp ./actions/libs-installer -D analyzer-optimize -main Main
 
       - name: Configure Android
         run: |
@@ -53,7 +53,7 @@ jobs:
           haxelib run lime config ANDROID_SETUP true
 
       - name: Compile
-        run: haxelib run lime build android -D 32bits_disabled -ARM64 -debug
+        run: haxelib run lime build android -D 32bits_disabled -ARM64 -final
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
