@@ -47,10 +47,6 @@ class SongSelectState extends ExtendableState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.changePresence('Freeplay Menu', null);
-		#end
-
 		persistentUpdate = true;
 
 		var baseSongs = TJSON.parse(Paths.getTextFromFile('data/songs/songs.json'));

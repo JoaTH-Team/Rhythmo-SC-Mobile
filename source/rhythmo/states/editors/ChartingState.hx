@@ -76,10 +76,6 @@ class ChartingState extends ExtendableState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.changePresence('Chart Editor', null, null, true);
-		#end
-
 		menuStructure = [
 			'Help' => [{name: 'Controls', func: () -> openSubState(new HelpSubState())}],
 			'Chart' => [

@@ -90,10 +90,6 @@ class Main extends openfl.display.Sprite
 		Lib.current.stage.window.setIcon(lime.graphics.Image.fromFile('icon.png'));
 		#end
 
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.load();
-		#end
-
 		Application.current.window.onFocusOut.add(onWindowFocusOut);
 		Application.current.window.onFocusIn.add(onWindowFocusIn);
 
@@ -223,10 +219,6 @@ class Main extends openfl.display.Sprite
 
 		FlxG.sound.play(Paths.sound('error'));
 
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.shutdown();
-		#end
-
 		#if windows
 		WindowsAPI.messageBox('Error!', 'Uncaught Error: \n$msg
 			\n\nIf you think this shouldn\'t have happened, report this error to GitHub repository!\nhttps://github.com/JoaTH-Team/Rhythmo-SC/issues', MSG_ERROR);
@@ -279,9 +271,6 @@ class Main extends openfl.display.Sprite
 		Sys.println('Crash dump saved in ${Path.normalize(path)}');
 
 		Application.current.window.alert(errMsg, 'CRITICAL ERROR!');
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.shutdown();
-		#end
 		Sys.exit(1);
 	}
 	#end

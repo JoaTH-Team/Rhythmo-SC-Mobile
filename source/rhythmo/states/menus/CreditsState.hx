@@ -40,10 +40,6 @@ class CreditsState extends ExtendableState
 
 	override public function create():Void
 	{
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.changePresence('Credits Menu', null);
-		#end
-
 		persistentUpdate = true;
 
 		credData = TJSON.parse(Paths.getTextFromFile('data/credits/credits.json'));

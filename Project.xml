@@ -22,8 +22,7 @@
 
 	<!-- [ Custom Defines ] -->
 
-	<define name="FUTURE_POLYMOD" if="desktop" />
-	<define name="FUTURE_DISCORD_RPC" if="desktop" />
+	<define name="FUTURE_POLYMOD" if="desktop || mobile" />
 	<define name="UPDATE_CHECK" if="desktop release" />
 	<define name="CRASH_HANDLER" if="desktop release" />
 
@@ -67,7 +66,6 @@
 	<haxelib name="rulescript" />
 	<haxelib name="hxluajit-wrapper" />
 	<haxelib name="scriptless-polymod" if="FUTURE_POLYMOD" />
-	<haxelib name="hxdiscord_rpc" if="FUTURE_DISCORD_RPC" />
 	<haxelib name="hxcpp-debug-server" if="desktop debug" />
 	<haxelib name="hxgamemode" if="linux" />
 	<haxelib name="hx_arabic_shaper" />

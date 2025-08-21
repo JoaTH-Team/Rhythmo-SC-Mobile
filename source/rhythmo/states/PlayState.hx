@@ -67,10 +67,6 @@ class PlayState extends ExtendableState
 
 	var isPerfect:Bool = true;
 
-	#if FUTURE_DISCORD_RPC
-	private var detailsText:String = '';
-	#end
-
 	public function new():Void
 	{
 		super();
@@ -96,10 +92,6 @@ class PlayState extends ExtendableState
 
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
-
-		#if FUTURE_DISCORD_RPC
-		detailsText = (campaignMode) ? 'Campaign Mode' : 'Freeplay';
-		#end
 
 		persistentUpdate = persistentDraw = true;
 
@@ -307,10 +299,6 @@ class PlayState extends ExtendableState
 
 		if (paused && FlxG.sound.music != null)
 			FlxG.sound.music.pause();
-
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.changePresence(detailsText, song.song, 'icon');
-		#end
 	}
 
 	override public function update(elapsed:Float):Void
@@ -435,10 +423,6 @@ class PlayState extends ExtendableState
 			if (FlxG.sound.music != null)
 				FlxG.sound.music.pause();
 
-			#if FUTURE_DISCORD_RPC
-			DiscordClient.changePresence('Paused - ' + detailsText, song.song, 'icon');
-			#end
-
 			paused = true;
 		}
 		super.openSubState(SubState);
@@ -456,10 +440,6 @@ class PlayState extends ExtendableState
 			FlxTimer.globalManager.forEach((tmr:FlxTimer) -> if (!tmr.finished) tmr.active = true);
 			FlxTween.globalManager.forEach((twn:FlxTween) -> if (!twn.finished) twn.active = true);
 
-			#if FUTURE_DISCORD_RPC
-			DiscordClient.changePresence(detailsText, song.song, 'icon', true, FlxG.sound.music.length - Conductor.songPosition);
-			#end
-
 			paused = false;
 			callOnScripts('resume', []);
 			callOnLuas('resume', []);
@@ -468,31 +448,6 @@ class PlayState extends ExtendableState
 
 		Paths.clearUnusedMemory();
 	}
-
-	#if FUTURE_DISCORD_RPC
-	override function onFocus():Void
-	{
-		if (health > 0 && !paused)
-		{
-			if (Conductor.songPosition > 0.0)
-				DiscordClient.changePresence(detailsText, song.song, 'icon', true, FlxG.sound.music.length - Conductor.songPosition);
-			else
-				DiscordClient.changePresence(detailsText, song.song, 'icon');
-		}
-		callOnScripts('onFocus', []);
-		callOnLuas('onFocus', []);
-		super.onFocus();
-	}
-
-	override function onFocusLost():Void
-	{
-		if (health > 0 && !paused)
-			DiscordClient.changePresence('Paused - ' + detailsText, song.song, 'icon');
-		callOnScripts('onFocusLost', []);
-		callOnLuas('onFocusLost', []);
-		super.onFocusLost();
-	}
-	#end
 
 	function pause():Void
 	{

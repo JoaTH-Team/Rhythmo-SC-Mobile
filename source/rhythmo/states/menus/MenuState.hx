@@ -21,10 +21,6 @@ class MenuState extends ExtendableState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
-		#if FUTURE_DISCORD_RPC
-		DiscordClient.changePresence('Main Menu', null);
-		#end
-
 		persistentUpdate = persistentDraw = true;
 
 		if (!FlxG.sound.music.playing #if FUTURE_POLYMOD || ModsState.mustResetMusic #end)
