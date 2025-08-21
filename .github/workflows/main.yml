@@ -45,6 +45,15 @@ jobs:
         run: |
           haxe --interp -cp ./actions/libs-installer -D analyzer-optimize -main Main
 
+      - name: Save Current Haxelib Cache
+        uses: actions/cache@main
+        with:
+          key: cache-android-debug
+          path: |
+            .haxelib/
+          restore-keys: |
+            cache-android-debug
+
       - name: Configure Android
         run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
